@@ -1,0 +1,242 @@
+<!--
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<h3>Consulta de CNPJ ao sintegra ES</h3>
+   <div class="container" >
+  <form method="post" class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+      <span style="display: inline-block; padding: 10px 0px; height: 40px;">Informe o login de usuário: </span>
+      
+      <input class='form-control' type="text" name="login">
+      
+      <span style="display: inline-block; padding: 10px 0px; height: 40px;">Informe sua senha: </span>
+      
+      <input class='form-control' type="password" name="senha">
+      
+      <span style="display: inline-block; padding: 10px 0px; height: 40px;">Informe o cnpj a ser consultado: </span>
+      
+      <input class='form-control' type="text" name="num_cnpj" id="num_cnpj">
+      
+      <input class='form-control' style="margin:20px 0;" type="submit" value="Consultar">
+  </form>
+  <?php $conteudo =  $this->resp;
+    if($conteudo == '||||'){
+        $conteudo  = "Dados enviados incorretamente !";
+    }else{
+      echo '<br>';
+      //print_r($conteudo);  
+      echo '<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">';
+      echo '<table class="table table-condensed "> ';
+      echo '<thead> ';
+      echo '<tr> ';
+      echo '<th colspan="2" style="text-align:center;" >Dados de "'.trim($conteudo['identificacao']['r_social']).'" </th>';
+      echo '</tr> ';
+      echo '</thead> ';
+      echo '<tbody>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      CNPJ:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['identificacao']['CNPJ']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Razão Social:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['identificacao']['r_social']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Inscrição Estadual:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['identificacao']['ie']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td colspan="2" style="width:50%;font-weight:bold;text-align:center;">';
+      echo '      Dados de Endereço';
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Logradouro:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['Logradouro']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Número:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['numero']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Bairro:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['Bairro']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Municipio:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['municipio']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      UF:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['UF']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      CEP:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['CEP']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Telefone:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['endereco']['Telefone']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td colspan="2" style="width:50%;font-weight:bold;text-align:center;">';
+      echo '      Informações Adicionais';
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Atividade Econômica:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['info_comp']['atv_economica']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Início de Atividade:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['info_comp']['Dat_inicio']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Situação Vigente:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['info_comp']['Sit_vig']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Data Situacao Cadastral:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['info_comp']['Data_Situacao_Cadastral']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Regime apuracao:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['info_comp']['Regime_apuracao']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '  <tr>';
+      echo '    <td style="width:50%;font-weight:bold;">';
+      echo '      Emitente desde:';
+      echo '    </td>';
+      echo '    <td>';
+      echo      trim($conteudo['info_comp']['Emitente_desde']);
+      echo '    </td>';
+      echo '  </tr>';
+
+      echo '</tbody>';
+      echo '</table>';
+      echo '</div>';
+    }
+  ?>
+  </div>
+
